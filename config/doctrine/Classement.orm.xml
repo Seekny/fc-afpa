@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\Classement" table="classement">
+    <indexes>
+      <index name="CLASSEMENT_JOURNEE_FK" columns="ID_JOURNEE"/>
+    </indexes>
+    <id name="idClassement" type="integer" column="ID_CLASSEMENT">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="positionClassement" type="integer" column="POSITION_CLASSEMENT" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="pointsClasslement" type="integer" column="POINTS_CLASSLEMENT" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="butsMarques" type="integer" column="BUTS_MARQUES" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="butsEncaisses" type="integer" column="BUTS_ENCAISSES" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idJournee" target-entity="Journee" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_JOURNEE" referenced-column-name="ID_JOURNEE"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,28 @@
+easy_admin:
+  entities:
+      Utilisateur:
+        class: App\Entity\Utilisateur
+        label: 'Utilisateurs'
+        disabled_actions: ['new']
+        edit:
+          title: 'Éditer un Utilisateur'
+          fields:
+            - {property: 'username', label: 'Pseudo', type: 'text'}
+            - {property: 'NomUtilisateur', label: 'Nom', type: 'text'}
+            - {property: 'PrenomUtilisateur', label: 'Prénom', type: 'text'}
+            - {property: 'EmailUtilisateur', label: 'Email', type: 'email'}
+            - {property: 'TelephoneUtilisateur', label: 'Telephone', type: 'text'}
+            - {property: 'AdresseUtilisateur', label: 'Adresse', type: 'text'}
+            #- {property: 'ville', label: 'Ville'}
+
+        list:
+          title: 'Utilisateur'
+          fields:
+            - {property: 'IsValid', label: 'Actif/Banni', type: 'toggle'}
+            - {property: 'username', label: 'Pseudo'}
+            - {property: 'NomUtilisateur', label: 'Nom'}
+            - {property: 'PrenomUtilisateur', label: 'Prénom'}
+            - {property: 'EmailUtilisateur', label: 'Email'}
+            - {property: 'TelephoneUtilisateur', label: 'Telephone'}
+            - {property: 'AdresseUtilisateur', label: 'Adresse'}
+            - {property: 'dateInscription', label: 'Date', format: 'd/m/Y à H:i:s'}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\News" table="news">
+    <indexes>
+      <index name="NEWS_EQUIPES_FK" columns="ID_EQUIPE"/>
+    </indexes>
+    <id name="idNews" type="integer" column="ID_NEWS">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="titreNews" type="string" column="TITRE_NEWS" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="createdAtNews" type="datetime" column="CREATED_AT_NEWS" nullable="false"/>
+    <field name="texteNews" type="text" column="TEXTE_NEWS" length="0" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descriptionNews" type="text" column="DESCRIPTION_NEWS" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="imageNews" type="string" column="IMAGE_NEWS" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idEquipe" target-entity="Equipes" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_EQUIPE" referenced-column-name="ID_EQUIPE"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

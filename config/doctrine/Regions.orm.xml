@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\Regions" table="regions">
+    <indexes>
+      <index name="REGIONS_NOUVELLES_REGIONS_FK" columns="CODE_NOUVELLES_REGIONS"/>
+    </indexes>
+    <id name="codeRegions" type="string" column="CODE_REGIONS" length="6">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomRegions" type="string" column="NOM_REGIONS" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="codeNouvellesRegions" target-entity="NouvellesRegions" fetch="LAZY">
+      <join-columns>
+        <join-column name="CODE_NOUVELLES_REGIONS" referenced-column-name="CODE_NOUVELLES_REGIONS"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

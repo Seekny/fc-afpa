@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+
+    {% block stylesheet %}
+        <link href="{{ asset('assets/css/contact.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('assets/css/responsive/contact_responsive.css.css')}}" rel="stylesheet" type="text/css"/>
+    {% endblock %}
+
+    <body>
+		<div class="over-wrap">
+    <!-- Home -->
+			{% for message in app.flashes('notice') %}
+				<div class="alert alert-success alert-success-homepage" role="alert">
+					{{ message }}
+				</div>
+			{% endfor %}
+			<div class="home d-flex flex-column align-items-start justify-content-end">
+				<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{{ asset('assets/images/others/contact_fond1.jpg')}}" data-speed="0.8"></div>
+				<div class="container">
+					<div class="row">
+						<div class="col text-center">
+							<div class="home_text"><span>Contactez</span> Nous</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="uk-container uk-container-center alt">
+				<ul class="uk-breadcrumb">
+					<li>Contact</li>
+				</ul>
+			</div>
+
+
+		<!-- Contact -->
+
+			<div class="contact">
+				<div class="container">
+					<div class="row">
+
+						<!-- Content -->
+						<div class="col-lg-6">
+							<div class="contact_content">
+								<div class="contact_title">Reste en contact avec nous</div>
+								<div class="contact_text">
+									<p>Salutations l'ami, ce formluaire est a ta disposition tu souhaites nous faire parvenir un message, nous donner un feedback de notre site, ou même partager une information avec notre équipe.</p>
+								</div>
+								<div class="contact_form_container">
+									<div id="contactForm" class="mt-4 contact">
+										{{ form_start(form, {'attr': {'class': ' contact_form'}}) }}
+											<div class="col margin-col">{{ form_widget(form.firstname, {'attr': {'class': 'input contact_input form-control', 'placeholder': 'Prenom'}}) }}</div>
+											<div class="col margin-col">{{ form_widget(form.lastname, {'attr': {'class': 'input contact_input form-control', 'placeholder': 'Nom'}}) }}</div>
+											<div class="col margin-col">{{ form_widget(form.email, {'attr': {'class': 'input contact_input form-control', 'placeholder': 'Email'}}) }}</div>
+											<div class="col margin-col">{{ form_widget(form.message, {'attr': {'class': 'input contact_input form-control', 'placeholder': 'Votre Message'}}) }}</div>
+											<div class="col error-but">{{ form_errors(form.message, {'attr': {'class': 'input contact_input form-control'}}) }}</div>
+
+											<div class="form-group btn-form">
+												<button class="btn btn-primary btn-no-hover btn-contact" type="submit">Envoyer</button>
+											</div>
+										{{ form_end(form) }}
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Image -->
+						<div class="col-lg-6">
+							<div class="contact_image">
+								<div class="background_image" style="background-image:url({{ asset('assets/images/others/contact_fond2.jpg')}})"></div>
+								<img src="images/contact_image.jpg" alt="">
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+
+{% endblock %}

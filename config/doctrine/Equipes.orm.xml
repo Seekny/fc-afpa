@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\Equipes" table="equipes">
+    <indexes>
+      <index name="EQUIPES_VILLE_FK" columns="ID_VILLE"/>
+    </indexes>
+    <id name="idEquipe" type="integer" column="ID_EQUIPE">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomEquipe" type="string" column="NOM_EQUIPE" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idVille" target-entity="Ville" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_VILLE" referenced-column-name="ID_VILLE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="idSponsors" target-entity="Sponsors" mapped-by="idEquipe" fetch="LAZY"/>
+  </entity>
+</doctrine-mapping>

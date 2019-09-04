@@ -1,0 +1,22 @@
+easy_admin:
+  entities:
+      Saisons:
+        class: App\Entity\Saison
+
+        list:
+          title: 'Saisons'
+          fields:
+            - {property: 'id', label: 'ID Saison'}
+            - {property: 'saison', label: 'Nom de Saison'}
+            - {property: 'dateDebutSaison', label: 'Début de la saison', format: 'd/m/Y'}
+            - {property: 'dateFinSaison', label: 'Fin de la saison', format: 'd/m/Y'}
+        new:
+          fields:
+            - {property: 'saison', label: 'Nom de Saison'}
+            - {property: 'dateDebutSaison', label: 'Début de la saison', format: 'd/m/Y'}
+            - {property: 'dateFinSaison', label: 'Fin de la saison', format: 'd/m/Y'}
+        edit:
+          fields:
+            - {property: 'saison', label: 'Nom de Saison'}
+            - {property: 'dateDebutSaison', label: 'Début de la saison', format: 'd/m/Y'}
+            - {property: 'dateFinSaison', label: 'Fin de la saison', format: 'd/m/Y'}

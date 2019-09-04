@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\Journee" table="journee">
+    <indexes>
+      <index name="JOURNEE_SAISON_FK" columns="ID_SAISON"/>
+    </indexes>
+    <id name="idJournee" type="integer" column="ID_JOURNEE">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="numJournee" type="string" column="NUM_JOURNEE" length="12" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idSaison" target-entity="Saison" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_SAISON" referenced-column-name="ID_SAISON"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

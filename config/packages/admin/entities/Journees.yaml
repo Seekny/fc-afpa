@@ -1,0 +1,17 @@
+easy_admin:
+  entities:
+      Journees:
+        class: App\Entity\Journee
+
+        edit:
+          fields:
+            - {property: 'numJournee', label: 'Numero de Journée'}
+            - {property: 'comprendre', label: 'Liste des Matchs'}
+        new:
+          fields:
+            - {property: 'numJournee', label: 'Numero de Journée'}
+            - {property: 'comprendre', label: 'Liste des Matchs'}
+        list:
+          fields:
+            - {property: 'numJournee', label: 'Numero de Journée'}
+            - {property: 'comprendre', label: 'Nombre de Matchs'}

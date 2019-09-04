@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\Competition" table="competition">
+    <indexes>
+      <index name="COMPETITION_EQUIPES_FK" columns="ID_EQUIPE"/>
+    </indexes>
+    <id name="idCompetition" type="integer" column="ID_COMPETITION">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomCompetition" type="string" column="NOM_COMPETITION" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dateDebutComp" type="date" column="DATE_DEBUT_COMP" nullable="false"/>
+    <field name="dateFinComp" type="date" column="DATE_FIN_COMP" nullable="false"/>
+    <many-to-one field="idEquipe" target-entity="Equipes" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_EQUIPE" referenced-column-name="ID_EQUIPE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="idSaison" target-entity="Saison" mapped-by="idCompetition" fetch="LAZY"/>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\User" table="user">
+    <indexes>
+      <index name="USER_VILLE_FK" columns="ID_VILLE"/>
+    </indexes>
+    <id name="idUser" type="integer" column="ID_USER">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomUser" type="string" column="NOM_USER" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prenomUser" type="string" column="PRENOM_USER" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="emailUser" type="string" column="EMAIL_USER" length="300" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="telephoneUser" type="string" column="TELEPHONE_USER" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="adresseUser" type="string" column="ADRESSE_USER" length="250" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="password" type="string" column="PASSWORD" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="username" type="string" column="USERNAME" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="isvalide" type="boolean" column="isValide" nullable="false"/>
+    <field name="roles" type="array" column="ROLES" length="0" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="resetToken" type="string" column="reset_token" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dateInscription" type="datetime" column="DATE_INSCRIPTION" nullable="false"/>
+    <many-to-one field="idVille" target-entity="Ville" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_VILLE" referenced-column-name="ID_VILLE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="idArticle" target-entity="Boutique" mapped-by="idUser" fetch="LAZY"/>
+    <many-to-many field="numeroBillet" target-entity="Billetterie" mapped-by="idUser" fetch="LAZY"/>
+  </entity>
+</doctrine-mapping>

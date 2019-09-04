@@ -1,0 +1,31 @@
+easy_admin:
+  entities:
+      Competitions:
+        class: App\Entity\Competition
+
+        list:
+          fields:
+            - {property: 'id', label: 'ID Competition'}
+            - {property: 'nomCompetition', label: 'Nom de competition'}
+            - {property: 'DateDebutCompet', label: 'Début de la competition', format: 'd/m/Y à H:i:s'}
+            - {property: 'DateFinCompet', label: 'Fin de la competition', format: 'd/m/Y à H:i:s'}
+            - {property: 'comporter', label: 'Nombre de journées'}
+            - {property: 'disposer', label: 'Nombre de matchs'}
+            - {property: 'participer', label: "Nombre d'équipes"}
+            - {property: 'englober', label: 'nombre de saisons'}
+        edit:
+          fields:
+            - {property: 'nomCompetition', label: 'Nom de competition'}
+            - {property: 'DateDebutCompet', label: 'Début de la competition', format: 'd/m/Y à H:i:s'}
+            - {property: 'DateFinCompet', label: 'Fin de la competition', format: 'd/m/Y à H:i:s'}
+            - {property: 'comporter', label: 'Liste des journées'}
+            - {property: 'disposer', label: 'Liste des matchs'}
+            - {property: 'englober', label: 'liste des saisons'}
+        new:
+          fields:
+            - {property: 'nomCompetition', label: 'Nom de competition'}
+            - {property: 'DateDebutCompet', label: 'Début de la competition', format: 'd/m/Y à H:i:s'}
+            - {property: 'DateFinCompet', label: 'Fin de la competition', format: 'd/m/Y à H:i:s'}
+            - {property: 'comporter', label: 'Liste des journées'}
+            - {property: 'disposer', label: 'Liste des matchs'}
+            - {property: 'englober', label: 'liste des saisons'}

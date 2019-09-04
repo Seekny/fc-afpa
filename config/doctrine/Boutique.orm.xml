@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\Boutique" table="boutique">
+    <id name="idArticle" type="integer" column="ID_ARTICLE">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomArticle" type="string" column="NOM_ARTICLE" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prixArticle" type="integer" column="PRIX_ARTICLE" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-many field="idUser" target-entity="User" inversed-by="idArticle" fetch="LAZY">
+      <join-table name="acheter">
+        <join-columns>
+          <join-column name="ID_ARTICLE" referenced-column-name="ID_ARTICLE"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="ID_USER" referenced-column-name="ID_USER"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

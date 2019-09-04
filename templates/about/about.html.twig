@@ -1,0 +1,301 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About{% endblock %}
+
+
+
+
+{% block body %}
+
+{% block stylesheet %}
+<!-- Style about -->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/about.css')}}">
+<!-- Responsive about -->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive/about_responsive.css')}}">
+
+{% endblock %}
+
+
+<div class="super_container">
+
+	<!-- Home -->
+
+	<div class="home d-flex flex-column align-items-start justify-content-end">
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{{ asset('assets/images/sportstream/about.jpg')}}" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="home_text">L'Equipe du<span> FC AFPA </span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+ 	<div class="uk-container uk-container-center alt">
+                <ul class="uk-breadcrumb">
+                    <li>Le Club
+                    </li>
+                </ul>
+            </div>
+	<!-- About -->
+
+	<div class="about">
+		<div class="container">
+			<div class="row">
+			
+
+				<!-- About Image -->
+				<div class="col-xl-6 order-xl-1 order-2">
+					<div class="about_image">
+						<div class="background_image" style="background-image:url({{ asset('assets/images/others/about_fond1.jpg')}}); "></div>
+						<img src="{{ asset('assets/images/others/news_fond6.jpg')}}" alt="">
+					</div>
+				</div>
+
+				<!-- About content -->
+				<div class="col-xl-6 order-xl-2 order-1">
+					<div class="about_content">
+						<div class="about_content_container">
+							<div class="section_title_container">
+								<div class="section_title">
+									<h1>A propos de l'équipe</h1>
+								</div>
+							</div>
+							<div class="about_title">Le club, un passé, un présent, un futur</div>
+							<div class="about_subtitle">Une histoire</div>
+							<div class="about_text">
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan dolor id enim lacinia, sed feugiat ex suscipit. Nunc molestie malesuada pellentesque. Quisque mattis ante ut nisl tristique ornare. Aenean interdum dictum augue, quis egestas erat lacinia in. Proin dictum commodo nulla ut mattis. Pellentesque vel commodo nisi. Donec eget purus eget ex efficitur tristique. Nulla ut mollis justo.</p>
+								<p>Nam turpis nulla, ullamcorper volutpat faucibus ut, facilisis in elit. Nam blandit diam vel felis porta, vitae congue nulla feugiat. Vestibulum rhoncus odio elit, at aliquet sem posuere vel.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+<!-- Team -->
+
+<div class="team">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title_container text-center">
+                    <div class="section_title">
+                        <h1>Découvrez votre Equipe
+                        </h1>
+                    </div>
+                    {% for saison in saisons %}
+                        {% if date() > saison.dateDebutSaison and date() < saison.dateFinSaison %}
+                            <div class="section_subtitle">Saison {{saison.saison}}</div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row team_large_row">
+            {% for staffs in staffModalShow %}
+                <!-- The Modal -->
+                <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="detail{{staffs.id}}" role="dialog" tabindex="-1">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content flex-row">
+                            <div class="display-block">
+                                <img class="Modal-image" src="{{ asset('assets/images/image_staffs/' ~ staffs.imageStaff)}}" alt="">
+                            </div>
+                            <div class="cv-joueur">
+                                <h1>
+                                    <span>{{staffs.prenomStaff}}
+                                        {{staffs.nomStaff}}</span>
+                                </h1>
+                                <p>
+                                    <span>
+                                        ROLE OCCUPE :
+                                    </span>
+                                    {{staffs.roleStaff}}
+                                </p>
+                                <p>
+                                    <span>
+                                        Description :</span>
+                                    {{staffs.descriptionStaff}}<p>
+                                        <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% for staffs in staffModalShow %}
+                        <!-- CADRE DE SUPERIEUR HIERARCHIQUE -->
+                        <div class="col-lg-4">
+                            <div class="team_large">
+                                <div><img class="team_large_image" src="{{ asset('assets/images/image_staffs/' ~ staffs.imageStaff)}}" alt=""></div>
+                                <div class="team_large_content text-center">
+                                    <div class="team_large_name">{{staffs.nomstaff}}
+                                        {{staffs.prenomstaff}}</div>
+                                    <div class="team_large_title">{{staffs.rolestaff}}</div>
+                                    <div>
+                                        <button class="btn btn-primary view-button" data-target="#detail{{staffs.id}}" data-toggle="modal" type="button">Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="row team_small_row">
+                    {% for joueurs in joueurModalShow %}
+                        <!-- The Modal -->
+                        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="detail{{joueurs.id}}" role="dialog" tabindex="-1">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content flex-row">
+                                    <div class="display-block">
+                                        <img class="Modal-image" src="{{ asset('assets/images/image_joueurs/' ~ joueurs.image_joueur)}}" alt="">
+                                    </div>
+                                    <div class="cv-joueur">
+                                        <h1>
+                                            <span>{{joueurs.nom_joueur}}
+                                                {{joueurs.prenom_joueur}}</span>
+                                        </h1>
+                                        <p>
+                                            <span>
+                                                POSTE OCCUPE :
+                                            </span>
+                                            {{joueurs.poste_joueur}}
+                                        </p>
+                                        <p>
+                                            <span>
+                                                NATIONALITE:
+                                            </span>
+                                            {{joueurs.nationalite}}</p>
+                                        <p>
+                                            <span>
+                                                AGE :
+                                            </span>
+                                            {{joueurs.age_joueur}}</p>
+                                        <p>
+                                            <span>
+                                                NUMERO DE MAILLOT :
+                                            </span>
+                                            {{joueurs.num_maillot_joueur}}</p>
+                                        <p>
+                                            <span>Description :
+                                            </span>
+                                            {{joueurs.description_joueur}}<p>
+                                                <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            {% for joueurs in joueurModalShow %}
+                                <!-- Team Item -->
+                                <div class="col-xl-2 col-md-4 col-sm-6">
+                                    <div class="team_small d-flex flex-sm-column flex-row align-items-center justify-content-sm-center justify-content-start">
+                                        <div class="team_small_image img-size"><img class="img-size" src="{{ asset('assets/images/image_joueurs/' ~ joueurs.image_joueur)}}" alt="">
+                                            <div>{{joueurs.num_maillot_joueur}}</div>
+                                        </div>
+                                        <div class="team_small_content text-sm-center">
+                                            <div class="team_small_name">{{joueurs.nom_joueur}}</div>
+                                            <div>
+                                                <button class="btn btn-primary view-button" data-target="#detail{{joueurs.id}}" data-toggle="modal" type="button">Details</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+
+	<!-- Testimonials -->
+
+	<div class="testimonials">
+		<div class="parallax_background" data-image-src="{{ asset('assets/images/sportstream/testimonials.jpg')}}"></div>
+		<div class="test_overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title_container text-center">
+						<div class="section_title">
+							<h1>Témoignages</h1>
+						</div>
+						<div class="section_subtitle">Les Fans</div>
+					</div>
+					<div class="testimonials_slider_container">
+						<div class="owl-carousel owl-theme test_slider">
+
+							<!-- Slide -->
+							<div>
+								<div class="test_item text-center">
+									<div class="test_text">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan dolor id enim lacinia, sed feugiat ex suscipit. Nunc molestie malesuada pellentesque. Quisque mattis ante ut nisl tristique ornare. Aenean interdum dictum augue, quis egestas erat lacinia in. Proin dictum commodo nulla ut mattis. Pellentesque vel commodo nisi. Donec eget purus eget ex efficitur tristique. Nulla ut mollis justo.</p>
+									</div>
+									<div class="test_image"><img src="{{ asset('assets/images/sportstream/test_1.jpg')}}" alt=""></div>
+									<div class="test_name"><a href="#">Laurent</a><span>, Superfan</span></div>
+								</div>
+							</div>
+
+							<!-- Slide -->
+							<div>
+								<div class="test_item text-center">
+									<div class="test_text">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan dolor id enim lacinia, sed feugiat ex suscipit. Nunc molestie malesuada pellentesque. Quisque mattis ante ut nisl tristique ornare. Aenean interdum dictum augue, quis egestas erat lacinia in. Proin dictum commodo nulla ut mattis. Pellentesque vel commodo nisi. Donec eget purus eget ex efficitur tristique. Nulla ut mollis justo.</p>
+									</div>
+									<div class="test_image"><img src="{{ asset('assets/images/sportstream/test_1.jpg')}}" alt=""></div>
+									<div class="test_name"><a href="#">Alexandre</a><span>, Superfan</span></div>
+								</div>
+							</div>
+
+							<!-- Slide -->
+							<div>
+								<div class="test_item text-center">
+									<div class="test_text">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan dolor id enim lacinia, sed feugiat ex suscipit. Nunc molestie malesuada pellentesque. Quisque mattis ante ut nisl tristique ornare. Aenean interdum dictum augue, quis egestas erat lacinia in. Proin dictum commodo nulla ut mattis. Pellentesque vel commodo nisi. Donec eget purus eget ex efficitur tristique. Nulla ut mollis justo.</p>
+									</div>
+									<div class="test_image"><img src="{{ asset('assets/images/sportstream/test_1.jpg')}}" alt=""></div>
+									<div class="test_name"><a href="#">Jimmy</a><span>, Superfan</span></div>
+				
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- CTA -->
+
+<div class="cta">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="cta_content d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
+                    <div class="cta_text">Vous voulez rejoindre notre
+                        <span>
+                            Equipe ?</span>
+                    </div>
+                    {% if not app.user%}
+                        <div class="cta_button button ml-md-auto">
+                            <a href="{{path('connexion')}}">Ajouter un Témoignage</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="cta_button button ml-md-auto">
+                        <a href="#">Ajouter un Témoignage</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<!--END SUPER CONTRAINER !-->
+</div>
+
+
+
+{% endblock %}

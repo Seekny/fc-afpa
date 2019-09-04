@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>
+            {% block title %}FC AFPA!{% endblock %}
+        </title>
+
+        <!-- Bootstrap -->
+
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('assets/css/bootstrap.min.css')}}">
+
+        <!-- Font-Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+            crossorigin="anonymous">
+
+        <!-- Styles CSS -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/home.css')}}">
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('assets/plugins/OwlCarousel2-2.3.4/owl.carousel.css')}}">
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('assets/plugins/OwlCarousel2-2.3.4/owl.theme.default.css')}}">
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('assets/plugins/OwlCarousel2-2.3.4/animate.css')}}">
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('assets/css/base.css')}}">
+
+        <!-- Responsive Home -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('assets/css/responsive/responsive-me.css')}}">
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('assets/css/responsive/navbar_responsive.css')}}">
+
+        <!-- Java registration -->
+        <link   
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('assets/css/responsive/responsive-me.css')}}">
+
+        {% block stylesheets %}{% endblock %}
+
+    </head>
+
+    <body>
+
+        <!-- Header -->
+
+<nav class="navbar navbar-expand-xl navbar-dark bg-navbar fixed-top">
+
+    <div class="test">
+        <a href="{{path('home')}}"><img class="logo-navbar" src="{{ asset('assets/images/logos_clubs/logo_afpa.png')}}" alt=""></a>
+    </div>
+    <a class="navbar-brand" href="{{path('home')}}">FC AFPA</a>
+    <button aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link {% if current_menu is defined and current_menu == 'accueilActive' %}active-nav{% endif %}" href="{{path('home')}}">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if current_menu is defined and current_menu == 'aboutActive' %}active-nav{% endif %}" href="{{path('about')}}">Le Club</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if current_menu is defined and current_menu == 'newsActive' %}active-nav{% endif %}" href="{{path('news')}}">News</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if current_menu is defined and current_menu == 'calendrierActive' %}active-nav{% endif %}" href="{{path('calendrier')}}">Calendrier</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle {% if current_menu is defined and (current_menu == 'classementL1Active' or current_menu == 'classementLDCActive') %}active-nav{% endif %}" data-toggle="dropdown" href="#" id="competitionDropdown">
+                    Competition
+                </a>
+                <div class="dropdown-menu" aria-labelledby="competitionDropdown">
+                    <a class="dropdown-item {% if current_menu is defined and current_menu == 'classementL1Active' %}active-nav{% endif %}" href="{{path('ligue1')}}">Ligue 1</a>
+                    <a class="dropdown-item {% if current_menu is defined and current_menu == 'classementLDCActive' %}active-nav{% endif %}" href="{{path('ligueChampions')}}">Ligue des Champions</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if current_menu is defined and current_menu == 'contactActive' %}active-nav{% endif %}" href="{{path('contact')}}">Contact</a>
+            </li>
+        </ul>
+    </div>
+
+    {% if not app.user %}
+        <div class="d-flex">
+            <div>
+                <a class="register btn btn-primary btn-no-hover" href="{{path('inscription')}}">
+                    INSCRIPTION
+                </a>
+            </div>
+            <div>
+                <a class="register btn btn-primary btn-no-hover" href="{{path('connexion')}}">
+                    CONNEXION
+                </a>
+            </div>
+        {% else %}
+            <div class="d-flex">
+                <div class="dropdown1">
+                    <button class="dropbtn1">Mon Profil</button>
+                    <div class="dropdown-content1">
+                        <a href="{{path('deconnexion')}}">Deconnexion</a>
+                        <a href="{{path('account_password')}}">Changer de mot de passe</a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="/admin">Admin</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </nav>
+
+
+            <!-- Fin Header -->
+
+            <!-- Body-Page -->
+
+            {% block body %}{% endblock %}
+
+            <!-- Fin Body-Page -->
+
+            <!-- Début Footer -->
+
+            <footer id="tm-footer" class="tm-footer background-blue">
+
+                <div class="container">
+                    <div class="Subscribe-newsletter align-text">
+                        <h3>Inscrivez-vous à notre newsletter</h3>
+                    </div>
+                    <div class="form-email button-email align-text">
+                        <form action="" method="POST">
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    name="username"
+                                    class="form-control"
+                                    placeholder="Entrez votre adresse email pour vous inscrire"/>
+                            </div>
+                            <div class="border-test">
+                                <button type="submit" class="btn btn-primary btn-no-hover">M'inscrire</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="sponsors">
+                        <div class="sponsors1 d-flex">
+                            <div class="title-sponsors">
+                                PARTENAIRES OFFICIELS :
+                            </div>
+                            {{render('sponsors')}}
+                        </div>
+
+                    <div class="footer-wrap">
+                        <div class="copyrights">Copyright
+                            <a href="https://www.afpa.fr">AFPA Formation Developpeur Web et Web Mobile</a>
+                            2019. Tous droits réservés.</div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- Fin Footer -->
+
+            <!-- CODE JS -->
+        {% block javascripts %}
+            <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+            <script src="{{ asset('assets/plugins/scrollmagic/ScrollMagic.min.js')}}"></script>
+            <script src="{{ asset('assets/plugins/OwlCarousel2-2.3.4/owl.carousel.js')}}"></script>
+            <script src="{{ asset('assets/js/custom.js')}}"></script>
+
+            <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
+            <script src="{{ asset('assets/plugins/greensock/TweenMax.min.js')}}"></script>
+            <script src="{{ asset('assets/plugins/greensock/TimelineMax.min.js')}}"></script>
+            <script src="{{ asset('assets/plugins/greensock/animation.gsap.min.js')}}"></script>
+            <script src="{{ asset('assets/plugins/greensock/ScrollToPlugin.min.js')}}"></script>
+
+            <script src="{{ asset('assets/plugins/progressbar/progressbar.min.js')}}"></script>
+            <script src="{{ asset('assets/plugins/parallax-js-master/parallax.min.js')}}"></script>
+            <script src="{{ asset('assets/js/about.js')}}"></script>
+            <script src="{{ asset('assets/js/registration.js')}}"></script>
+            <script>
+                $('#exampleModal').on('show.bs.modal', function (event) {
+                    var button = $(event.relatedTarget) // Button that triggered the modal
+                    modal
+                        .find('.modal-title')
+                        .text('New message to ' + recipient)
+                    modal
+                        .find('.modal-body input')
+                        .val(recipient)
+                })
+            </script>
+            <script src="{{ asset('assets/js/classement.js') }}"></script>
+
+        {% endblock %}
+            <!-- FIN CODE JS -->
+
+        </div>
+    </body>
+</html>

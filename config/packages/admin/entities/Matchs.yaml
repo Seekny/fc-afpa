@@ -1,0 +1,41 @@
+easy_admin:
+  entities:
+      Matchs:
+        class: App\Entity\Matchs
+        label: Matchs
+        actions:
+          - {name: 'new', label: Créer Match}
+        edit:
+          fields:
+            - {property: 'dateMatch', label: 'Date du match', format: 'd/m/Y à H:i:s'}
+            - {property: 'titre', label: 'Titre du match'}
+            - {property: 'resultatMatch', label: 'Résultat AFPA'}
+            - {property: 'resumeMatch', label: 'Résumé du match'}
+            - {property: 'scoreEquipeDom', label: 'Score domicile'}
+            - {property: 'scoreEquipeExt', label: 'Score extérieur'}
+            - {property: 'equipeDomicile', label: 'Équipe domicile'}
+            - {property: 'equipeExterieur', label: 'Équipe extérieur'}
+            - {property: 'journee', label: 'Journée'}
+        list:
+          fields:
+            - {property: 'id', label: 'ID match'}
+            - {property: 'dateMatch', label: 'Date du match', format: 'd/m/Y à H:i:s'}
+            - {property: 'titre', label: 'Titre du match', , charset: 'UTF-8'}
+            - {property: 'resultatMatch', label: 'Résultat AFPA'}
+            - {property: 'resumeMatch', label: 'Résumé du match'}
+            - {property: 'scoreEquipeDom', label: 'Score domicile'}
+            - {property: 'scoreEquipeExt', label: 'Score extérieur'}
+            - {property: 'equipeDomicile', label: 'Équipe domicile'}
+            - {property: 'equipeExterieur', label: 'Équipe extérieur'}
+            - {property: 'journee', label: 'Journée'}
+        new:
+          fields:
+            - {property: 'dateMatch', label: 'Date du match', format: 'd/m/Y à H:i:s'}
+            - {property: 'titre', label: 'Titre du match'}
+            - {property: 'resultatMatch', label: 'Résultat AFPA'}
+            - {property: 'resumeMatch', label: 'Résumé du match'}
+            - {property: 'scoreEquipeDom', label: 'Score domicile'}
+            - {property: 'scoreEquipeExt', label: 'Score extérieur'}
+            - {property: 'equipeDomicile', label: 'Équipe domicile'}
+            - {property: 'equipeExterieur', label: 'Équipe extérieur'}
+            - {property: 'journee', label: 'Journée'}

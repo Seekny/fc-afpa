@@ -1,0 +1,33 @@
+easy_admin:
+  entities:
+      Equipes:
+        class: App\Entity\Equipe
+
+        list:
+          title: 'Équipes'
+          fields:
+            - {property: 'id', label: 'ID Joueur'}
+            - {property: 'nomEquipe', label: "Nom de l'équipe"}
+            - {property: 'stade', label: 'Stade'}
+            - {property: 'logoEquipe', label: 'Logo', type: image, base_path: '%app.path.equipes%'}
+            - {property: 'composer', label: 'Nombre de Joueurs'}
+            - {property: 'recevoir', label: 'Nombre de matchs domicile'}
+            - {property: 'deplacer', label: "Nombre de matchs l'extérieur"}
+        new:
+          title: 'Créer une Équipe'
+          fields:
+            - {property: 'nomEquipe', label: "Nom de l'équipe"}
+            - {property: 'stade', label: 'Stade'}
+            - {property: 'imageFile', label: 'Image', type: 'vich_image'}
+            - {property: 'composer', label: 'Joueurs'}
+            - {property: 'recevoir', label: 'Matchs à domicile'}
+            - {property: 'deplacer', label: "Matchs à l'extérieur"}
+        edit:
+          title: 'Éditer une Équipe'
+          fields:
+            - {property: 'nomEquipe', label: "Nom de l'équipe"}
+            - {property: 'stade', label: 'Stade'}
+            - {property: 'imageFile', label: 'Image', type: 'vich_image'}
+            - {property: 'composer', label: 'Joueurs'}
+            - {property: 'recevoir', label: 'Matchs à domicile'}
+            - {property: 'deplacer', label: "Matchs à l'extérieur"}

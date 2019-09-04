@@ -1,0 +1,113 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ asset('assets/css/registration.css')}}">
+{% endblock %}
+{% block body %}
+    <body>
+
+        <div class="inner">
+            <div class="image-holder"><img src="{{ asset('assets/images/others/inscription_fond3.png')}}" alt=""></div>
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}</div>
+            {% endfor %}
+
+            {{form_start(form)}}
+
+            <h3>Inscription</h3>
+
+            <div class="form-grouped d-flex row" style="color:black;">
+                <div class="form-wrapper margin-left-register">
+                 <div>Nom
+                    </div>
+                    <div class="error-form">
+                        {{ form_errors(form.nom_utilisateur)}}
+                    </div>
+                    {{ form_widget(form.nom_utilisateur, {'attr': {'class': 'input form-control'}}) }}
+                </div>
+                <div class="form-wrapper margin-left-register">
+                    <div>Prénom
+                    </div>
+                    <div class="error-form">
+                        {{ form_errors(form.prenom_utilisateur)}}
+                    </div>
+                    {{ form_widget(form.prenom_utilisateur, {'attr': {'class': 'input form-control'}}) }}
+                </div>
+
+                <div class="form-wrapper margin-left-register">
+                    <div>Mot de Passe
+                    </div>
+                    <div class="error-form">
+                        {{ form_errors(form.password)}}
+                    </div>
+                    {{ form_widget(form.password, {'attr': {'class': 'input form-control'}}) }}
+
+                </div>
+                <div class="form-wrapper margin-left-register">
+                    <div>Confirmer Mot de Passe
+                    </div>
+                    <div class="error-form">
+                        {{ form_errors(form.confirm_password)}}
+                    </div>
+                    {{ form_widget(form.confirm_password, {'attr': {'class': 'input form-control'}}) }}
+
+                </div>
+                <div class="form-wrapper margin-left-register">
+                    <div>Pseudo
+                    </div>
+                    <div class="error-form">
+                        {{ form_errors(form.username)}}
+                    </div>
+                    {{ form_widget(form.username, {'attr': {'class': 'input form-control'}}) }}
+
+                </div>
+                <div class="form-wrapper margin-left-register">
+                    <div>Email
+                    </div>
+                    <div class="error-form">
+                        {{ form_errors(form.email_utilisateur)}}
+                    </div>
+                    {{ form_widget(form.email_utilisateur, {'attr': {'class': 'input form-control'}}) }}
+
+                </div>
+                <div class="form-wrapper margin-left-register">
+                    <div>Téléphone
+                    </div>
+                    <div class="error-form">
+                        {{ form_errors(form.telephone_utilisateur)}}
+                    </div>
+                    {{ form_widget(form.telephone_utilisateur, {'attr': {'class': 'input form-control'}}) }}
+                </div>
+                <div class="form-wrapper margin-left-register">
+                    <div>Adresse
+                    </div>
+                    {{ form_widget(form.adresse_utilisateur, {'attr': {'class': 'input form-control'}}) }}
+                </div>
+                <div class="form-wrapper margin-left-register">
+                <div>Département
+                    </div>
+                    {{ form_widget(form.departement) }}
+                </div>
+                <div class="form-wrapper margin-left-register">
+                <div>Ville
+                    </div>
+                    {{ form_widget(form.ville) }}
+                </div>
+
+                <button class=" form-wrapper margin-left-register btn btn-primary btn-no-hover" type="submit">Inscription</button>
+                {{form_end(form) }}
+            </div>
+        </div>
+
+    </body>
+
+{% block javascript %}
+    <script type="text/javascript" src="{{ asset('assets/js/calendrier_js/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/app.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/app1.js')}}"></script>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,25 @@
+easy_admin:
+  entities:
+      News:
+        class: App\Entity\News
+        edit:
+          title: 'Éditer une news'
+          fields:
+            - {property: 'titreNews', label: 'Titre', type: 'text'}
+            - {property: 'texteNews', label: 'Texte', type: 'textarea'}
+            - {property: 'descriptionNews', label: 'Description', type: 'text'}
+            - {property: 'imageFile', label: 'Image', type: 'vich_image'}
+        new:
+          title: 'Créer une news'
+          fields:
+            - {property: 'titreNews', label: 'Titre', type: 'text'}
+            - {property: 'descriptionNews', label: 'Description', type: 'text'}
+            - {property: 'texteNews', label: 'Texte', type: 'textarea'}
+            - {property: 'imageFile', label: 'Image', type: 'vich_image'}
+        list:
+          title: 'News'
+          fields:
+            - {property: 'id', label: 'ID'}
+            - {property: 'imageNews', label: 'Image', type: image, base_path: '%app.path.news%'}
+            - {property: 'titreNews', label: 'Titre'}
+            - {property: 'createdAtNews', label: 'Crée le', format: 'd/m/Y à H:i:s'}

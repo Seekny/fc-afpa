@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\Staff" table="staff">
+    <indexes>
+      <index name="STAFF_EQUIPES_FK" columns="ID_EQUIPE"/>
+      <index name="STAFF_ROLE_STAFF0_FK" columns="ID_ROLE_STAFF"/>
+    </indexes>
+    <id name="idStaff" type="integer" column="ID_STAFF">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomStaff" type="string" column="NOM_STAFF" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prenomStaff" type="string" column="PRENOM_STAFF" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idEquipe" target-entity="Equipes" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_EQUIPE" referenced-column-name="ID_EQUIPE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idRoleStaff" target-entity="RoleStaff" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_ROLE_STAFF" referenced-column-name="ID_ROLE_STAFF"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

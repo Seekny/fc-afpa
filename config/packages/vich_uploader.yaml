@@ -1,0 +1,43 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        sponsor:
+            uri_prefix: /images/sponsors
+            upload_destination: '%kernel.project_dir%/public/assets/images/sponsors'
+            
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+        
+        news:
+            uri_prefix: /images/uploads
+            upload_destination: '%kernel.project_dir%/public/assets/images/uploads'
+            
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        joueurs:
+            uri_prefix: /images/image_joueurs
+            upload_destination: '%kernel.project_dir%/public/assets/images/image_joueurs'
+            
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        staffs:
+            uri_prefix: /images/image_staffs
+            upload_destination: '%kernel.project_dir%/public/assets/images/image_staffs'
+            
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        equipes:
+            uri_prefix: /images/logos_clubs
+            upload_destination: '%kernel.project_dir%/public/assets/images/logos_clubs'
+            
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true

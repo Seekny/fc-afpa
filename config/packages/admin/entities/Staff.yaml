@@ -1,0 +1,31 @@
+easy_admin:
+  entities:
+      Staffs:
+        class: App\Entity\Staff
+        edit:
+          title: 'Éditer un Staff'
+          fields:
+            - {property: 'nomStaff', label: 'Nom'}
+            - {property: 'prenomStaff', label: 'Prenom'}
+            - {property: 'roleStaff', label: 'Role du Staff'}
+            - {property: 'descriptionStaff', label: 'Description Staff' }
+            - {property: 'imageFile', label: 'Image Joueur', type: 'vich_image'}
+            
+        new:
+          title: 'Ajouter un Staff'
+          fields:
+            - {property: 'nomStaff', label: 'Nom'}
+            - {property: 'prenomStaff', label: 'Prenom'}
+            - {property: 'roleStaff', label: 'Role du Staff'}
+            - {property: 'descriptionStaff', label: 'Description Staff' }
+            - {property: 'imageFile', label: 'Image Joueur', type: 'vich_image'}
+           
+        list:
+          title: 'Staffs'
+          fields:
+            - {property: 'id', label: 'ID Staff'}
+            - {property: 'nomStaff', label: 'Nom'}
+            - {property: 'prenomStaff', label: 'Prenom'}
+            - {property: 'roleStaff', label: 'Role du Staff'}
+            - {property: 'descriptionStaff', label: 'Description Staff' }
+            - {property: 'imageStaff', label: 'Image', type: image, base_path: '%app.path.staffs%'}

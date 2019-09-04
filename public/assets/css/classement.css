@@ -1,0 +1,551 @@
+.uk-h1,
+h1 {
+    font-size: 40px;
+    line-height: 50px;
+}
+.uk-h3,
+h3 {
+    font-size: 24px;
+    line-height: 30px;
+}
+img {
+    max-width: 100%;
+}
+main,
+section {
+    display: block;
+}
+.uk-grid {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.uk-grid:after,
+.uk-grid:before {
+    content: "";
+    display: block;
+    overflow: hidden;
+}
+.uk-grid:after {
+    clear: both;
+}
+.uk-grid > * {
+    -ms-flex: none;
+    -webkit-flex: none;
+    flex: none;
+    margin: 0;
+    float: left;
+}
+.uk-grid > * > :last-child {
+    margin-bottom: 0;
+}
+.uk-grid {
+    margin-left: -25px;
+}
+.uk-grid > * {
+    padding-left: 25px;
+}
+@media (min-width:1220px) {
+    .uk-grid {
+        margin-left: -35px;
+    }
+    .uk-grid > * {
+        padding-left: 35px;
+    }
+    .uk-grid-collapse {
+        margin-left: 0;
+    }
+    .uk-grid-collapse > * {
+        padding-left: 0;
+    }
+    [class*=uk-width] {
+        box-sizing: border-box;
+        width: 100%;
+    }
+    .uk-width-1-1 {
+        width: 100%;
+    }
+}
+@media (min-width:880px) {
+    .uk-panel {
+        display: block;
+        position: relative;
+    }
+    .uk-panel,
+    .uk-panel:hover {
+        text-decoration: none;
+    }
+    .uk-panel:after,
+    .uk-panel:before {
+        content: "";
+        display: table;
+    }
+    .uk-panel:after {
+        clear: both;
+    }
+    .uk-panel > :not(.uk-panel-title):last-child {
+        margin-bottom: 0;
+    }
+    .uk-cover-background {
+        background-position: 50% 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+.uk-breadcrumb {
+    padding: 0;
+    list-style: none;
+    font-size: 0.001px;
+}
+.uk-breadcrumb > li {
+    font-size: 1rem;
+    vertical-align: top;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+}
+.uk-breadcrumb > li,
+.uk-breadcrumb > li > a,
+.uk-breadcrumb > li > span {
+    display: inline-block;
+}
+.uk-breadcrumb > li:nth-child(n+2):before {
+    content: "/";
+    display: inline-block;
+    margin: 0 8px;
+}
+.uk-container {
+    box-sizing: border-box;
+    max-width: 980px;
+    padding: 0 25px;
+
+}
+@media (min-width:1220px) {
+    .uk-container {
+        max-width: 1200px;
+        padding: 0 35px;
+    }
+}
+.uk-container:after,
+.uk-container:before {
+    content: "";
+    display: table;
+}
+.uk-container:after {
+    clear: both;
+}
+.uk-container-center {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 115px;
+    padding-right: 115px;
+}
+.uk-position-cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.uk-position-relative {
+    position: relative!important;
+}
+.uk-invisible {
+    visibility: hidden!important;
+}
+.uk-flex > * {
+    -ms-flex-negative: 1;
+}
+.uk-flex-center {
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+a {
+    transition: 0.4s color;
+    -webkit-transition: 0.4s color;
+    outline: 0;
+}
+.tm-full-width > .uk-container {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+}
+.match-list-wrap {
+    background: #161d4a;
+}
+.match-list-wrap .match-list-item {
+    margin-top: 1px;
+    padding: 9px 10px 10px;
+    border-bottom: 1px solid #161d4a;
+    font-size: 0;
+    box-sizing: border-box;
+}
+.match-list-wrap .match-list-item:hover {
+    background: #4a4a48;
+}
+.match-list-wrap .match-list-item:hover .date {
+    border-color: #5c5c5b;
+}
+.match-list-wrap .match-list-item:last-child {
+    border: none;
+}
+.match-list-wrap .match-list-item > div {
+    display: inline-block;
+    vertical-align: middle;
+}
+.match-list-wrap .match-list-item .date {
+    margin-right: 30px;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #006400;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 12px;
+}
+.match-list-wrap .match-list-item .logo img {
+    width: 30px;
+    height: 30px;
+    background-color: transparent!important;
+    border: none;
+}
+.match-list-wrap .match-list-item .team-name {
+    padding: 0 14px;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #fff;
+    width: 243px;
+}
+.uk-breadcrumb {
+    margin-left: 40px;
+    margin-bottom: -1px;
+    margin-top: -45px;
+    position: relative;
+    background: #006400;
+}
+.uk-breadcrumb:after {
+    content: '';
+    background: #006400;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -1000%;
+    left: 100%;
+    display: block;
+}
+.uk-breadcrumb:before {
+    content: '';
+    background: rgba(0,0,0,.2);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -1000%;
+    right: 100%;
+    display: block;
+}
+.uk-breadcrumb > li {
+    line-height: 45px;
+}
+.uk-breadcrumb > li:nth-child(n+2):before {
+    content: '>';
+    color: #fff;
+}
+.uk-breadcrumb > li:first-child > a {
+    color: #363533;
+}
+.uk-breadcrumb > li:first-child {
+    position: relative;
+    z-index: 1;
+}
+.uk-breadcrumb > li:first-child:before {
+    content: '';
+    background: #006400;
+    transform: skew(-33deg);
+    -webkit-transform: skew(-33deg);
+    position: absolute;
+    left: -25px;
+    top: 0;
+    bottom: 0;
+    width: 150%;
+    z-index: -1;
+}
+.uk-breadcrumb > li > a {
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Work Sans';
+}
+.head-title {
+    top: 50%;
+}
+.head-title h1 {
+    color: #fffffe;
+    font-size: 38px;
+    text-transform: uppercase;
+}
+
+.home_text {
+    font-size: 60px;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.home_text {
+    display: inline-block!important;
+    background: #161d4a;
+    padding: 17px 34px 13px;
+}
+.home_text span {
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #006400;
+}
+.home {
+    height: 548px;
+    padding-bottom: 134px;
+}
+.home_text {
+    font-size: 60px;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 50px;
+    margin-left: 230px;
+}
+.home_text span {
+    color: #006400;
+}
+.sidebar {
+    width: 100%;
+    margin-top: -3px;
+    padding-bottom: 55px;
+    
+}
+.sidebar_title h3 {
+    font-size: 28px;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 24px;
+    font-weight: 400;
+    font-family: Oswald;
+    padding: 30px 0px 0px 30px;
+    text-align: left;
+    padding-bottom: 20px;
+    
+}
+.sidebar_subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: #006400;
+    line-height: 1.2;
+    margin-top: -5px;
+}
+.next_games_container {
+    margin-top: 49px;
+    background: #161d4a;
+    width: 55%;
+}
+.next_games_container ul {
+    display: block;
+}
+.next_games_container ul li {
+    display: block;
+    background: #161d4a;
+    padding: 16px 9px 19px 10px;
+}
+.next_games_container ul li:not(:last-of-type) {
+    margin-bottom: 3px;
+}
+.next_games_teams {
+    margin-top: 5px;
+}
+.next_games_teams > div {
+    width: 50%;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+.next_games_teams > div:first-child .team_name {
+    margin-left: 8px;
+}
+.next_games_teams > div:last-child .team_name {
+    margin-right: 8px;
+}
+.team_logo {
+    width: 36px;
+    height: 36px;
+}
+.team_logo a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 36px;
+}
+.team_logo a img {
+    max-height: 100%;
+}
+.team_name a {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.4;
+}
+.next_games_date {
+    margin-top: -3px;
+}
+.next_games_date a {
+    font-size: 11px;
+    font-weight: 500;
+    color: #fff;
+}
+.latest_posts {
+    background: #161d4a;
+    margin-top: 58px;
+    width: 55%;
+}
+.latest_posts_container {
+    margin-top: 52px;
+}
+.latest_post:not(:last-child) {
+    margin-bottom: 3px;
+}
+.latest_post_image {
+    padding-left: 30px;
+    width: 79px;
+    height: 79px;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+.latest_post_image a {
+
+    display: block;
+    height: 100%;
+}
+.latest_post_content {
+    padding-left: 20px;
+}
+.latest_post_date {
+    padding-bottom: 6px;
+    font-size: 14px;
+    line-height: 14px;
+    font-family: 'Work Sans';
+    color: #787774;
+}
+.latest_post_date a {
+    font-size: 12px;
+    font-weight: 500;
+    color: #006400;
+}
+.latest_post_title {
+    margin-top: 4px;
+}
+.latest_post_title a {
+    font-size: 14px;
+    color: #fff;
+    font-family: 'Work Sans';
+    font-weight: 500;
+    line-height: 16px;
+    display: block;
+}
+.background_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border: solid 1px #000;
+}
+
+.classement {
+    padding-top: 70px;
+}
+
+.img-news-classement {
+height: 50px;
+width: 60px;
+max-width: none;
+}
+
+.sidebar_title_container {
+   
+    background: #161d4a;
+}
+.border_side_container{
+    border-bottom: white solid 2px;
+}
+
+.border_side_container {
+    border-bottom: white solid 2px;
+}
+
+.match-list-wrap .match-list-item .data-classement {
+    margin-right: 30px;
+    width: 44px;
+    height: 44px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 12px;
+}
+
+.index-ranking-team-name {
+    text-align: center;
+    width: 273px;
+    height: 44px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 12px;
+}
+
+.over-wrap {
+    overflow-x: hidden;
+}
+
+.uk-cover-background {
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.uk-cover {
+    overflow: hidden;
+}
+
+[data-uk-cover] {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.text-color-nextmatchs {
+    color: white;
+}
+
+.group {
+    color: #006400;
+    font-weight: bold;
+    font-size: 24px;
+}

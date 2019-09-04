@@ -1,0 +1,125 @@
+/************
+1. 1820px
+************/
+
+@media only screen and (max-width: 1820px) {
+    .nav-link {
+        margin-left: 90px;
+        font-size: 16px;
+        font-weight: 700;
+        color: white !important;
+        text-transform: uppercase;
+    }
+}
+
+/************
+1. 1750px
+************/
+
+@media only screen and (max-width: 1750px) {
+    .nav-link {
+        margin-left: 80px;
+        font-size: 16px;
+        font-weight: 700;
+        color: white !important;
+        text-transform: uppercase;
+    }
+}
+
+/************
+1. 1680px
+************/
+
+@media only screen and (max-width: 1680px) {
+    .nav-link {
+        margin-left: 70px;
+        font-size: 16px;
+        font-weight: 700;
+        color: white !important;
+        text-transform: uppercase;
+    }
+}
+
+/************
+1. 1610px
+************/
+
+@media only screen and (max-width: 1610px) {
+    .nav-link {
+        margin-left: 60px;
+        font-size: 16px;
+        font-weight: 700;
+        color: white !important;
+        text-transform: uppercase;
+    }
+}
+
+/************
+1. 1532px
+************/
+
+@media only screen and (max-width: 1532px) {
+    .nav-link {
+        margin-left: 50px;
+        font-size: 16px;
+        font-weight: 700;
+        color: white !important;
+        text-transform: uppercase;
+    }
+}
+
+/************
+1. 1462px
+************/
+
+@media only screen and (max-width: 1462px) {
+    .nav-link {
+        margin-left: 40px;
+        font-size: 16px;
+        font-weight: 700;
+        color: white !important;
+        text-transform: uppercase;
+    }
+}
+
+/************
+1. 1392px
+************/
+
+@media only screen and (max-width: 1392px) {
+    .nav-link {
+        margin-left: 30px;
+        font-size: 16px;
+        font-weight: 700;
+        color: white !important;
+        text-transform: uppercase;
+    }
+}
+
+/************
+1. 1322px
+************/
+
+@media only screen and (max-width: 1322px) {
+    .nav-link {
+        margin-left: 20px;
+        font-size: 16px;
+        font-weight: 700;
+        color: white !important;
+        text-transform: uppercase;
+    }
+}
+
+/************
+1. 1252px
+************/
+
+@media only screen and (max-width: 1252px) {
+    .nav-link {
+        margin-left: 10px;
+        font-size: 16px;
+        font-weight: 700;
+        color: white !important;
+        text-transform: uppercase;
+    }
+}

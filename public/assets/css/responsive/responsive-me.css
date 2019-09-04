@@ -1,0 +1,175 @@
+/*---------------- RESPONSIVE -------------- */
+@media only screen and (max-width: 1200px) {
+
+	.breaking_news_title {
+	
+		font-size: 20px;
+	}
+	.image-player-month {
+		height: 75%;
+		width: 75%;
+	}
+	.player-month {
+		font-size: 15px;
+	}
+	.button-log {
+		display: block;
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 10%;
+		color: white;
+		background: transparent;
+		/* border-radius: 2em; */
+		/* border: grey 1px solid; */
+		font-size: 10px;
+		font-weight: 700;
+		
+}
+.fa-user {
+	display: none;
+}
+.button-logout {
+	display: block;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 10%;
+	color: white;
+	background: transparent;
+	/* border-radius: 2em; */
+	/* border: grey 1px solid; */
+	font-size: 10px;
+	font-weight: 700;
+}
+}
+@media only screen and (max-width: 991px) {
+.register {
+	display: none;
+}
+	.title-about {
+margin-top: 20px;
+	
+	}
+	.main_nav_container_outer {
+		height: 50px;
+	}
+
+	.main_nav_container > div:not(:nth-child(2)) ul {
+		display: none !important;
+	}
+
+	.hamburger {
+		display: block;		
+		position: absolute;
+		top: 2px;
+		right: 2px;
+
+	}
+
+	.home_text {
+		padding-left: 91px;
+		padding-right: 25px;
+	}
+
+	.home_text > div {
+		top: -26px;
+		width: 77px;
+		height: 123px;
+		font-size: 72px;
+	}
+
+	.home_text span {
+		font-size: 48px;
+	}
+
+	#breaking_news {
+		display: none;
+	}
+	.result:first-child .result_content
+	{
+		padding-right: 10px;
+		padding-top: 50px;
+	}
+	.result:last-child .result_content
+	{
+		padding-left: 10px;
+	}
+	.result_num
+	{
+		font-size: 36px;
+	}
+	.result_team
+	{
+		font-size: 18px;
+	}
+	.results_container
+	{
+		margin-top: 60px;
+	}
+	.result_text
+	{
+		margin-top: 32px;
+	}
+	.result_text p
+	{
+		font-size: 14px;
+	}
+	.result_team
+	{
+		margin-top: 22px;
+	}
+	.team_image
+	{
+		height: 152px;
+	}
+	.result:first-child .result_content::after
+	{
+		bottom: 20px;
+		height: 100px;
+	}
+	.image-player-month {
+		height: 50px;
+		width: 100px;
+	}
+	.button-log
+	{
+		display: none;
+	}
+	.button-logout
+	{
+		display: none;
+	}
+	
+}
+
+@media only screen and (max-width: 767px) {
+	.home_text span {
+		font-size: 36px;
+	}
+
+	.home_text > div {
+		top: -22px;
+		width: 62px;
+		height: 106px;
+		font-size: 48px;
+		line-height: 97px;
+	}
+
+	.home_text {
+		padding-left: 74px;
+	}
+
+	#breaking_news {
+		display: none;
+	}
+	.result_num
+	{
+		display: none;
+	}
+	.result_team
+	{
+		display: none;
+	}
+	
+}

@@ -1,0 +1,11 @@
+easy_admin:
+  site_name: 'FC AFPA'
+  design:
+    brand_color: '#161d4a'
+
+  user:
+    name_property_path: 'username'
+  list:
+    actions:
+      - {name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-secondary'}
+      - {name: 'delete', icon: 'trash', label: false, css_class: 'btn btn-danger'}

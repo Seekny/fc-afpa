@@ -1,0 +1,307 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FcAfpaController!{% endblock %}
+
+{% block body %}
+
+     <section id="home">
+        <!--Début Home -->
+
+        <div class="home">
+            {% for message in app.flashes('notice') %}
+                <div class="alert alert-success alert-success-homepage" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <!-- Home Slider -->
+            <div class="home_slider_container">
+                <div class="owl-carousel owl-theme home_slider">
+                    <!-- Slide -->
+                    {% for nextMatch in nextMatch %}
+                    <div class="home_slide">
+                        <div class="background_image" style="background-image:url({{ asset('assets/images/others/fond1.jpg)')}}"></div>
+                        <div class="home_container">
+                            <div class="container">
+                                <div class="row">
+
+                                    <div class="col-lg-10">
+                                        <div class="home_text d-flex flex-row ">
+                                            <div id='countdown'></div>
+                                            <span>jour(s) avant le prochain match</span>
+                                        </div>
+                                        <div class="next_match">
+                                            <div>
+                                                <div class="next_match_home">
+                                                    <p>{{ nextMatch.equipe_domicile }}</p>
+                                                </div>
+                                                <div class="next_match_guest">
+                                                    <p>{{ nextMatch.equipe_exterieur }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  
+
+                    <div class="home_slide">
+                        <div
+                            class="background_image"
+                            style="background-image:url({{ asset('assets/images/others/classement_fond2.png)')}}"></div>
+                        <div class="home_container">
+                            <div class="container">
+                                <div class="row">
+
+                                    <div class="col-lg-10">
+                                        <div class="home_text d-flex flex-row ">
+                                            <div id="countdown1"></div>
+                                            <span>jour(s) avant le prochain match</span>
+                                        </div>
+                                        <div class="next_match">
+                                            <div>
+                                                <div class="next_match_home">
+                                                    <p>{{ nextMatch.equipe_domicile }}</p>
+                                                </div>
+                                                <div class="next_match_guest">
+                                                    <p>{{ nextMatch.equipe_exterieur }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% for lastNewsHome in lastNews %}
+                        <div class="home_slide">
+                            <div
+                                class="background_image"
+                                style="background-image:url({{ asset('assets/images/uploads/' ~ lastNewsHome.imageNews)}}"></div>
+                            <div class="home_container_news">
+                                <div class="container">
+                                    <div class="row">
+
+                                        <div class="col-lg-10">
+                                            <div class="home_text title_news d-flex flex-row ">                                                
+                                                <span class="blog_post_title">{{ lastNewsHome.descriptionNews }}</span>
+                                            </div>
+                                            <div class="next_match">
+                                                <div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--Fin Home -->
+
+    <!-- News -->
+    <section id="breaking_news">
+        <div class="breaking_news d-flex">
+            <div class="breaking_news_title text-right">
+                Informations importantes
+            </div>
+            <div class="breaking_news_content">
+                <div class="breaking_news_slider_container">
+                    <div class="owl-carousel owl-theme breaking_news_slider">
+                        <!-- Slide -->
+                        {% for new in news %}
+                            <div>{{ new.descriptionNews}}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End News -->
+
+    <!-- Results -->
+    <section>
+
+        <div class="results">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="section_title_container">
+                            <div class="section_title text-center">
+                                {% for LastMatchShow in LastMatch %}
+                                    <h1 class="title-last-match">Derniers Matchs</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row results_row">
+                        <div class="col">
+                            <div class="results_title_container text-center">
+                                <div class="results_title">{{ LastMatchShow.titre}}</div>
+                                <div class="results_subtitle">{{ LastMatchShow.date_match | date('d/m/y') }}
+                                    - Journée n°
+                                    {{ LastMatchShow.journee_id }}
+                                    de {{ LastMatchShow.nom_competition_court }}
+                                </div>
+                            </div>
+                            <div
+                                class="results_container d-flex flex-row align-items-start justify-content-start">
+                                <div class="result text-right">
+                                    <div
+                                        class="result_content d-flex flex-row align-items-end justify-content-start">
+                                        <div
+                                            class="team_image d-flex flex-column align-items-start justify-content-end">
+                                            <img
+                                                src="{{ asset('assets/images/logos_clubs/' ~ LastMatchShow.logo_domicile)}}"
+                                                alt=""
+                                               ></div>
+                                        <div class="text-center">
+                                            <div class="result_num">
+                                                {{ LastMatchShow.score_equipe_dom }}</div>
+                                            <div class="result_team">{{ LastMatchShow.equipe_domicile }}</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="result text-left">
+                                    <div
+                                        class="result_content d-flex flex-row align-items-end justify-content-start">
+                                        <div class="text-center">
+                                            <div class="result_num">{{ LastMatchShow.score_equipe_ext }}</div>
+                                            <div class="result_team">{{ LastMatchShow.equipe_exterieur }}</div>
+                                        </div>
+                                        <div class="team_image d-flex flex-column align-items-end justify-content-end">
+                                            <img
+                                                src="{{ asset('assets/images/logos_clubs/' ~ LastMatchShow.logo_exterieur)}}"
+                                                alt=""
+                                               ></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-resume-match text-center">
+                            {{ LastMatchShow.resume_match}}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- END results -->
+
+    <!-- UPCOMING EVENTS-->
+
+    <section id="news_and_matchs">
+        <div class="about">
+
+            <div class="container">
+
+                <div class="row about-block-middle">
+                    <div class="col-xl-6">
+                        <div class="title-about">
+                            <h1>NEWS EN BREF</h1>
+                            Ce que vous avez manqué
+                        </div>
+                        {% for new in news %}
+                            <div class="news-block d-flex flex-row align-items-center">
+                                <div class="news-block-text">{{ new.titreNews }}
+                                    <div class="date">
+                                        <i>{{ new.createdAtNews | date('d/m/Y') }}</i>
+                                    </div>
+                                </div>
+                                <a href="{{ path('news')}}" class="btn btn-primary slide_right">Détails</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- LATEST MATCH-->
+
+                    <div class="col-xl-6">
+                        <div class="title-about">
+                            <h1>DERNIERS MATCHS</h1>Resultats
+                        </div>
+                        {% for LastFourMatchsShow in LastFourMatchs %}
+                            <div class="news-block d-flex">
+                                <div class="home-team d-flex">
+                                    <div><img class="img-last-four-matchs" src="{{ asset('assets/images/logos_clubs/' ~ LastFourMatchsShow.logo_domicile)}}" alt=""></div>
+                                    <div class="home-team-text">{{ LastFourMatchsShow.equipe_domicile }}</div>
+                                </div>
+                                <div class="stats-match">
+                                    
+                                        <div class="competition-match d-flex justify-content width-match-detail">Journée n°{{ LastFourMatchsShow.journee_id}} de {{ LastFourMatchsShow.nom_competition_court }}</div>
+                                            <div class="d-flex scores-last-matchs">
+                                                <div class="score"> {{ LastFourMatchsShow.score_equipe_dom }}</div>
+                                                <div class="space-scores">-</div>
+                                                <div class="score"> {{ LastFourMatchsShow.score_equipe_ext }}</div>
+                                            </div>
+                                        
+                                        <div class="date col">{{ LastFourMatchsShow.date_match | date('d/m/y') }}</div>
+                                     
+                                </div>
+                                
+                               
+                                <div class="visitor-team d-flex">
+                                    <div class="home-team-text-right"> {{ LastFourMatchsShow.equipe_exterieur }} </div>
+                                    <div><img class="img-last-four-matchs" src="{{ asset('assets/images/logos_clubs/' ~ LastFourMatchsShow.logo_exterieur)}}" alt=""></div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% block javascript %}
+        <script>
+            // Set the date we're counting down to
+
+            {% for nextMatch in nextMatch %}
+            var date = '{{ nextMatch.date_match | date('M j, Y H:i:s') }}';
+            var countDownDate = new Date(date).getTime();
+            {% endfor %}
+
+            // Update the count down every 1 second
+            var x = setInterval(function () {
+
+                // Get todays date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Output the result in an element with id="countdown"
+                document.getElementById("countdown").style.color = "white";
+                text = document.getElementById("countdown").innerHTML = days;
+                document.getElementById("countdown1").style.color = "white";
+                text = document.getElementById("countdown1").innerHTML = days;
+
+                //If the count down is over, write some text 
+                //if (distance < 0) {
+                //    clearInterval(x);
+                //    document.getElementById("expired").innerHTML = "EXPIRED";
+                //}
+            }, 1000);
+        </script>
+    {% endblock %}
+ 
+{% endblock %}

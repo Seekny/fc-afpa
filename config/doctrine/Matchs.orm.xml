@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\Matchs" table="matchs">
+    <indexes>
+      <index name="MATCHS_EQUIPES1_FK" columns="ID_EQUIPE_EQUIPES"/>
+      <index name="MATCHS_EQUIPES_FK" columns="ID_EQUIPE"/>
+      <index name="MATCHS_JOURNEE0_FK" columns="ID_JOURNEE"/>
+    </indexes>
+    <id name="idMatchs" type="integer" column="ID_MATCHS">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="dateMatchs" type="datetime" column="DATE_MATCHS" nullable="false"/>
+    <field name="stadeJoue" type="string" column="STADE_JOUE" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="resumeMatchs" type="text" column="RESUME_MATCHS" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="scoreEquipe1" type="integer" column="SCORE_EQUIPE1" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="scoreEquipe2" type="integer" column="SCORE_EQUIPE2" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idEquipeEquipes" target-entity="Equipes" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_EQUIPE_EQUIPES" referenced-column-name="ID_EQUIPE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEquipe" target-entity="Equipes" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_EQUIPE" referenced-column-name="ID_EQUIPE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idJournee" target-entity="Journee" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_JOURNEE" referenced-column-name="ID_JOURNEE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="idJoueurEquipe" target-entity="JoueursEquipe" inversed-by="idMatchs" fetch="LAZY">
+      <join-table name="jouer">
+        <join-columns>
+          <join-column name="ID_MATCHS" referenced-column-name="ID_MATCHS"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="ID_JOUEUR_EQUIPE" referenced-column-name="ID_JOUEUR_EQUIPE"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

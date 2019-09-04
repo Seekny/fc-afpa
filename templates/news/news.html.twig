@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}News{% endblock %}
+
+{% block body %}
+
+	{% block stylesheet %}
+		<!-- Style Blog --> 
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/news.css')}}">
+		<!-- Responsive Blog -->  
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive/news_responsive.css')}}">
+	{% endblock %}
+
+	<div class="super_container">
+		{% for message in app.flashes('notice') %}
+			<div class="alert alert-success alert-success-homepage" role="alert">
+				{{ message }}
+			</div>
+		{% endfor %}
+		
+
+		<!-- Home -->
+
+		<div class="home d-flex flex-column align-items-start justify-content-end">
+			<div class="background_image" style="background-image:url({{ asset('assets/images/others/news_fond9.jpg')}}); height: 547px;"> <div class="container">
+				<div class="row">
+					<div class="col text-center" style="">
+						<div class="home_text">Les <span>News</span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="uk-container uk-container-center alt">
+		<ul class="uk-breadcrumb">
+			<li>News</li>
+		</ul>
+	</div>
+
+	<!-- Blog -->
+
+	<div class="blog">
+		<div class="container">
+			<div class="row">
+				
+				<!-- Blog Posts -->
+				<div class="col-lg-9">
+					<div class="blog_posts">
+
+						{% for new in news %}
+						
+						<!-- Blog Post -->
+							<div class="blog_post">
+								<div class="blog_post_image">
+									<img class="min-width"src="{{ asset('assets/images/uploads/' ~ new.imageNews)}}" alt="">
+									<div class="blog_post_date">
+									
+										<div class="d-flex upper-green 	flex-column align-items-center justify-content-center">
+											<div>{{ new.createdAtNews | date('d') }}</div>
+											<div>{{ new.createdAtNews | date('M') }}</div>
+											<div>{{ new.createdAtNews | date('Y') }}</div>
+										</div>
+										
+									</div>
+								</div>
+								<div class="blog_post_content">
+									<div class="tags">
+										<ul class="d-flex flex-row align-items-start justify-content-start flex-wrap">
+											<li class="upper-green">{{ new.titreNews }}</li>
+										</ul>
+									</div>
+									<div class="blog_post_title">{{ new.descriptionNews }}</div>
+									<div class="blog_post_text">
+										<p>{{ new.texteNews }}</p>
+									</div>
+								</div>
+							</div>
+
+						{% endfor %}
+
+					</div>
+				</div>
+
+				<!-- Sidebar -->
+				<div class="col-lg-3 sidebar_col">
+					<div class="sidebar">
+						<div class="latest_games">
+							 <div class="sidebar_title_container">
+                                <div class="sidebar_title border_side_container">
+                                    <h3>Derniers Matchs</h3>
+                                </div>
+                            </div>
+
+							<!-- Latest Games -->
+							<div class="latest_games_container text-center">
+								<ul>
+									{% for match in matchs %}
+										<li>
+											<div class="latest_games_score">{{ match.score_equipe_dom }} : {{ match.score_equipe_ext }}</div>
+											<div class="latest_games_teams d-flex flex-row align-items-start justify-content-start">
+											
+												<div class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-start align-items-center justify-content-start">
+													<div class="team_logo">
+														<a>
+															<img src="{{ asset('assets/images/logos_clubs/' ~ match.logo_domicile)}}" alt="">
+														</a>
+													</div>
+													<div class="team_name text-left">
+														<a>{{ match.equipe_domicile }}</a>
+													</div>
+												</div>
+												<div class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-end align-items-center justify-content-end">
+													<div class="team_name text-right order-xl-1 order-lg-2 order-1">
+														<a>{{ match.equipe_exterieur }}</a>
+													</div>
+													<div class="team_logo order-xl-2 order-lg-1 order-2">
+														<a>
+															<img src="{{ asset('assets/images/logos_clubs/' ~ match.logo_exterieur)}}" alt="">
+														</a>
+													</div>
+												</div>
+											</div>
+											<div class="latest_games_date">
+												<a>{{ match.nom_competition_court }}</a>
+											</div>
+											<div class="latest_games_date">
+												<a>{{ match.date_match | date('d/m/Y') }}</a>
+											</div>
+										</li>
+									{% endfor %}
+								</ul>
+							</div>
+
+							<!-- Tickets -->
+							<div class="tickets">
+								<div class="background_image" style="background-image:url({{ asset('assets/images/others/news_tribunes.jpg)')}}"></div>
+								<div class="tickets_content text-center">
+									<div class="tickets_title">Venez nous encourager</div>															
+									<div class=" tickets_button results_button">
+										<a href="#">ACHETER DES BILLETS</a>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row page_nav_row">
+				<div class="col">
+					<div class="pagination">
+						{{knp_pagination_render(news)}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

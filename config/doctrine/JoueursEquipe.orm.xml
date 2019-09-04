@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\JoueursEquipe" table="joueurs_equipe">
+    <indexes>
+      <index name="JOUEURS_EQUIPE_EQUIPES_FK" columns="ID_EQUIPE"/>
+      <index name="JOUEURS_EQUIPE_NATIONALITE0_FK" columns="ID_NATIONALITE"/>
+    </indexes>
+    <id name="idJoueurEquipe" type="integer" column="ID_JOUEUR_EQUIPE">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomJoueurEquipe" type="string" column="NOM_JOUEUR_EQUIPE" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prenomJoueurEquipe" type="string" column="PRENOM_JOUEUR_EQUIPE" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="posteEquipe" type="string" column="POSTE_EQUIPE" length="3" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ageJoueur" type="integer" column="AGE_JOUEUR" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="numMaillotEquipe" type="integer" column="NUM_MAILLOT_EQUIPE" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idEquipe" target-entity="Equipes" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_EQUIPE" referenced-column-name="ID_EQUIPE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idNationalite" target-entity="Nationalite" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_NATIONALITE" referenced-column-name="ID_NATIONALITE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="idMatchs" target-entity="Matchs" mapped-by="idJoueurEquipe" fetch="LAZY"/>
+  </entity>
+</doctrine-mapping>

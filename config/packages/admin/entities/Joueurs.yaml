@@ -1,0 +1,40 @@
+easy_admin:
+  entities:
+      Joueurs:
+        class: App\Entity\Joueur
+        edit:
+          title: 'Éditer un joueur'
+          fields:
+            - {property: 'nomJoueur', label: 'Nom'}
+            - {property: 'prenomJoueur', label: 'Prenom'}
+            - {property: 'ageJoueur', label: 'Age'}
+            - {property: 'numMaillotJoueur', label: 'Numéro de maillot'}
+            - {property: 'equipe', label: 'Equipe'}
+            - {property: 'nationalite', label: 'Nationalité'}
+            - {property: 'descriptionJoueur', label: 'Description Joueur' }
+            - {property: 'imageFile', label: 'Image', type: 'vich_image'}
+        new:
+          title: 'Ajouter un joueur'
+          fields:
+            - {property: 'nomJoueur', label: 'Nom'}
+            - {property: 'prenomJoueur', label: 'Prenom'}
+            - {property: 'ageJoueur', label: 'Age'}
+            - {property: 'numMaillotJoueur', label: 'Numéro de maillot'}
+            - {property: 'equipe', label: 'Equipe'}
+            - {property: 'nationalite', label: 'Nationalité'}
+            - {property: 'descriptionJoueur', label: 'Description Joueur' }
+            - {property: 'posteJoueur', label: 'Poste Joueur'}
+            - {property: 'imageFile', label: 'Image Joueur', type: 'vich_image'}
+        list:
+          title: 'Joueurs'
+          fields:
+            - {property: 'id', label: 'ID Joueur'}
+            - {property: 'nomJoueur', label: 'Nom'}
+            - {property: 'prenomJoueur', label: 'Prenom'}
+            - {property: 'ageJoueur', label: 'Age'}
+            - {property: 'numMaillotJoueur', label: 'Numéro de maillot'}
+            - {property: 'equipe', label: 'Equipe'}
+            - {property: 'nationalite', label: 'Nationalité'}
+            - {property: 'descriptionJoueur', label: 'Description Joueur' }
+            - {property: 'posteJoueur', label: 'Poste Joueur'}
+            - {property: 'imageJoueur', label: 'Image Joueur', type: image, base_path: '%app.path.joueurs%'}

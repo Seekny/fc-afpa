@@ -1,0 +1,968 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% block stylesheet %}
+
+        
+        <link
+            href="{{ asset('assets/css/calendrier.css')}}"
+            rel="stylesheet"
+            type="text/css"/>
+        <link
+            href="{{ asset('assets/css/base.css')}}"
+            rel="stylesheet"
+            type="text/css"/>
+
+    {% endblock %}
+
+    <body class="tm-isblog">
+
+        <div class="over-wrap">
+
+            <div class="tm-top-a-box tm-full-width tm-box-bg-1 ">
+                <div class="uk-container uk-container-center">
+                    <section
+                        id="tm-top-a"
+                        class="tm-top-a uk-grid uk-grid-collapse"
+                        data-uk-grid-match="{target:'> div > .uk-panel'}"
+                        data-uk-grid-margin="">
+
+                        <div class="uk-width-1-1 uk-row-first">
+                            <div class="uk-panel">
+                                <div
+                                    class="uk-cover-background uk-position-relative head-wrap"
+                                    style="height: 550px; background-image: url({{ asset('assets/images/others/calendrier_fond1.jpeg')}});">
+                                   
+                                    <div class="uk-position-cover uk-flex uk-flex-center head-title">
+                                        <div class="row">
+                                            <div class="col text-center" style="">
+                                                <div class="home_text">Le
+                                                    <span>Calendrier</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="uk-container uk-container-center alt">
+                <ul class="uk-breadcrumb">
+                    <li>CALENDRIER</li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="uk-container uk-container-center">
+                    <div class="uk-grid no-marg">
+                        <div class="uk-width-6-10 va-single-next-match match-view-wrap">
+                            <div class="va-main-next-wrap">
+                                <div class="match-list-single">
+                                    <div class="match-list-item">
+                                        <div class="count">
+                                            <div id="countdown">
+                                                <div class="counter_container"></div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+
+                                        {% for nextmatch in nextmatch %}
+                                            <div class="clear"></div>
+                                            <div class="half right">
+                                                <div class="va-wrap">
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ nextmatch.logo_domicile)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ nextmatch.equipe_domicile }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="versus">VS</div>
+                                            <div class="half left">
+                                                <div class="va-wrap">
+                                                    <div class="team-name">
+                                                        {{ nextmatch.equipe_exterieur }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ nextmatch.logo_exterieur)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="date">
+                                                {{ nextmatch.nom_competition_court }}
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="date">
+                                                {{ nextmatch.date_match | date('d M Y | H:i') }}
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="location">
+                                                <i class="uk-icon-map-marker"></i>
+                                                {{ nextmatch.stade }}
+                                                <br><br>
+                                            </address>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br><br><br>
+
+                {# modal détail #}
+                {% for match in matchs %}
+                    <div
+                        aria-hidden="true"
+                        aria-labelledby="exampleModalLabel"
+                        class="modal fade"
+                        id="detail{{match.id}}"
+                        role="dialog"
+                        tabindex="-1">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Résumé du match
+                                        {{ match.equipe_domicile }}
+                                        -
+                                        {{ match.equipe_exterieur }}</h5>
+                                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    {{ match.resume_match }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <div class="uk-container uk-container-center">
+                    <div
+                        id="tm-middle"
+                        class="tm-middle uk-grid"
+                        data-uk-grid-match=""
+                        data-uk-grid-margin="">
+                        <div class="tm-main uk-width-medium-3-4 uk-push-1-4">
+                            <main id="tm-content" class="tm-content">
+                                <div class="match-list-wrap">
+                                    <div class="accordion bot-bord-collapse" id="janvier1">
+                                        <div
+                                            class="match-list-item btn btn-block"
+                                            data-toggle="collapse"
+                                            data-target="#janvier"
+                                            aria-expanded="false"
+                                            aria-controls="janvier">
+                                            <div class="team-name">
+                                                Janvier 2019
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse {% if date() | date('m/Y') == '01/2019' %} show {% endif %} bot-bord-collapse" id="janvier" data-parent="#janvier">
+
+                                        {% for match in matchs %}
+                                            {% if match.date_match | date('m/Y') == '01/2019' %}
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        <span>{{ match.date_match | date('d') }}</span>
+                                                        {{ match.date_match | date('M') }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_domicile)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_domicile }}
+                                                    </div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_dom }}
+                                                    </div>
+                                                    <div class="score-separator">-</div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_ext }}
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_exterieur }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_exterieur)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="va-view-wrap">
+                                                        <div>
+                                                            {% if date(match.date_match) < date() %}
+                                                                <button
+                                                                    class="btn btn-primary view-button"
+                                                                    data-target="#detail{{match.id}}"
+                                                                    data-toggle="modal"
+                                                                    type="button">Details</button>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="accordion bot-bord-collapse" id="fevrier1">
+                                        <div
+                                            class="match-list-item btn btn-block"
+                                            data-toggle="collapse"
+                                            data-target="#fevrier"
+                                            aria-expanded="false"
+                                            aria-controls="fevrier">
+                                            <div class="team-name">
+                                                Février 2019
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse {% if date() | date('m/Y') == '02/2019' %} show {% endif %} bot-bord-collapse" id="fevrier" data-parent="#fevrier">
+                                        {% for match in matchs %}
+                                            {% if match.date_match | date('m/Y') == '02/2019' %}
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        <span>{{ match.date_match | date('d') }}</span>
+                                                        {{ match.date_match | date('M') }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_domicile)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_domicile }}
+                                                    </div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_dom }}
+                                                    </div>
+                                                    <div class="score-separator">-</div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_ext }}
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_exterieur }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_exterieur)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="va-view-wrap">
+                                                        <div>
+                                                            {% if date(match.date_match) < date() %}
+                                                                <button
+                                                                    class="btn btn-primary view-button"
+                                                                    data-target="#detail{{match.id}}"
+                                                                    data-toggle="modal"
+                                                                    type="button">Details</button>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="accordion bot-bord-collapse" id="mars1">
+                                        <div
+                                            class="match-list-item btn btn-block"
+                                            data-toggle="collapse"
+                                            data-target="#mars"
+                                            aria-expanded="false"
+                                            aria-controls="mars">
+                                            <div class="team-name">
+                                                Mars 2019
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse {% if date() | date('m/Y') == '03/2019' %} show {% endif %} bot-bord-collapse" id="mars" data-parent="#mars">
+                                        {% for match in matchs %}
+                                            {% if match.date_match | date('m/Y') == '03/2019' %}
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        <span>{{ match.date_match | date('d') }}</span>
+                                                        {{ match.date_match | date('M') }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_domicile)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_domicile }}
+                                                    </div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_dom }}
+                                                    </div>
+                                                    <div class="score-separator">-</div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_ext }}
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_exterieur }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_exterieur)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="va-view-wrap">
+                                                        {% if date(match.date_match) < date() %}
+                                                            <button
+                                                                class="btn btn-primary view-button"
+                                                                data-target="#detail{{match.id}}"
+                                                                data-toggle="modal"
+                                                                type="button">Details</button>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="accordion bot-bord-collapse" id="avril1">
+                                        <div
+                                            class="match-list-item btn btn-block"
+                                            data-toggle="collapse"
+                                            data-target="#avril"
+                                            aria-expanded="false"
+                                            aria-controls="avril">
+                                            <div class="team-name">
+                                                Avril 2019
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse {% if date() | date('m/Y') == '04/2019' %} show {% endif %} bot-bord-collapse" id="avril" data-parent="#avril">
+                                        {% for match in matchs %}
+                                            {% if match.date_match | date('m/Y') == '04/2019' %}
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        <span>{{ match.date_match | date('d') }}</span>
+                                                        {{ match.date_match | date('M') }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_domicile)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_domicile }}
+                                                    </div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_dom }}
+                                                    </div>
+                                                    <div class="score-separator">-</div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_ext }}
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_exterieur }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_exterieur)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="va-view-wrap">
+                                                        {% if date(match.date_match) < date() %}
+                                                            <button
+                                                                class="btn btn-primary view-button"
+                                                                data-target="#detail{{match.id}}"
+                                                                data-toggle="modal"
+                                                                type="button">Details</button>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="accordion bot-bord-collapse" id="mai1">
+                                        <div
+                                            class="match-list-item btn btn-block"
+                                            data-toggle="collapse"
+                                            data-target="#mai"
+                                            aria-expanded="false"
+                                            aria-controls="mai">
+                                            <div class="team-name">
+                                                Mai 2019
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse {% if date() | date('m/Y') == '05/2019' %} show {% endif %} bot-bord-collapse" id="mai" data-parent="#mai">
+                                        {% for match in matchs %}
+                                            {% if match.date_match | date('m/Y') == '05/2019' %}
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        <span>{{ match.date_match | date('d') }}</span>
+                                                        {{ match.date_match | date('M') }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_domicile)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_domicile }}
+                                                    </div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_dom }}
+                                                    </div>
+                                                    <div class="score-separator">-</div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_ext }}
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_exterieur }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_exterieur)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="va-view-wrap">
+                                                        {% if date(match.date_match) < date() %}
+                                                            <button
+                                                                class="btn btn-primary view-button"
+                                                                data-target="#detail{{match.id}}"
+                                                                data-toggle="modal"
+                                                                type="button">Details</button>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="accordion bot-bord-collapse" id="juin1">
+                                        <div
+                                            class="match-list-item btn btn-block"
+                                            data-toggle="collapse"
+                                            data-target="#juin"
+                                            aria-expanded="false"
+                                            aria-controls="juin">
+                                            <div class="team-name">
+                                                Juin 2019
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse {% if date() | date('m/Y') == '06/2019' %} show {% endif %} bot-bord-collapse" id="juin" data-parent="#juin">
+                                        {% for match in matchs %}
+                                            {% if match.date_match | date('m/Y') == '06/2019' %}
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        <span>{{ match.date_match | date('d') }}</span>
+                                                        {{ match.date_match | date('M') }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_domicile)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_domicile }}
+                                                    </div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_dom }}
+                                                    </div>
+                                                    <div class="score-separator">-</div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_ext }}
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_exterieur }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_exterieur)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="va-view-wrap">
+                                                        {% if date(match.date_match) < date() %}
+                                                            <button
+                                                                class="btn btn-primary view-button"
+                                                                data-target="#detail{{match.id}}"
+                                                                data-toggle="modal"
+                                                                type="button">Details</button>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="accordion bot-bord-collapse" id="juillet1">
+                                        <div
+                                            class="match-list-item btn btn-block"
+                                            data-toggle="collapse"
+                                            data-target="#juillet"
+                                            aria-expanded="false"
+                                            aria-controls="juillet">
+                                            <div class="team-name">
+                                                Juillet 2019
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse {% if date() | date('m/Y') == '07/2019' %} show {% endif %} bot-bord-collapse" id="juillet" data-parent="#juillet">
+                                        <div class="test">
+                                            Aucun match de prévu ce mois-ci.
+                                        </div>
+                                    </div>
+                                    <div class="accordion bot-bord-collapse" id="aout1">
+                                        <div
+                                            class="match-list-item btn btn-block"
+                                            data-toggle="collapse"
+                                            data-target="#aout"
+                                            aria-expanded="false"
+                                            aria-controls="aout">
+                                            <div class="team-name">
+                                                Août 2019
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse {% if date() | date('m/Y') == '08/2019' %} show {% endif %} bot-bord-collapse" id="aout" data-parent="#aout">
+                                        {% for match in matchs %}
+                                            {% if match.date_match | date('m/Y') == '08/2019' %}
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        <span>{{ match.date_match | date('d') }}</span>
+                                                        {{ match.date_match | date('M') }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_domicile)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_domicile }}
+                                                    </div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_dom }}
+                                                    </div>
+                                                    <div class="score-separator">-</div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_ext }}
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_exterieur }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_exterieur)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="va-view-wrap">
+                                                        {% if date(match.date_match) < date() %}
+                                                            <button
+                                                                class="btn btn-primary view-button"
+                                                                data-target="#detail{{match.id}}"
+                                                                data-toggle="modal"
+                                                                type="button">Details</button>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="accordion bot-bord-collapse" id="septembre1">
+                                        <div
+                                            class="match-list-item btn btn-block"
+                                            data-toggle="collapse"
+                                            data-target="#septembre"
+                                            aria-expanded="false"
+                                            aria-controls="septembre">
+                                            <div class="team-name">
+                                                Septembre 2019
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse {% if date() | date('m/Y') == '09/2019' %} show {% endif %} bot-bord-collapse" id="septembre" data-parent="#septembre">
+                                        {% for match in matchs %}
+                                            {% if match.date_match | date('m/Y') == '09/2019' %}
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        <span>{{ match.date_match | date('d') }}</span>
+                                                        {{ match.date_match | date('M') }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_domicile)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_domicile }}
+                                                    </div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_dom }}
+                                                    </div>
+                                                    <div class="score-separator">-</div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_ext }}
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_exterieur }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_exterieur)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="va-view-wrap">
+                                                        {% if date(match.date_match) < date() %}
+                                                            <button
+                                                                class="btn btn-primary view-button"
+                                                                data-target="#detail{{match.id}}"
+                                                                data-toggle="modal"
+                                                                type="button">Details</button>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="accordion bot-bord-collapse" id="octobre1">
+                                        <div
+                                            class="match-list-item btn btn-block"
+                                            data-toggle="collapse"
+                                            data-target="#octobre"
+                                            aria-expanded="false"
+                                            aria-controls="octobre">
+                                            <div class="team-name">
+                                                Octobre 2019
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse {% if date() | date('m/Y') == '10/2019' %} show {% endif %} bot-bord-collapse" id="octobre" data-parent="#octobre">
+                                        {% for match in matchs %}
+                                            {% if match.date_match | date('m/Y') == '10/2019' %}
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        <span>{{ match.date_match | date('d') }}</span>
+                                                        {{ match.date_match | date('M') }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_domicile)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_domicile }}
+                                                    </div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_dom }}
+                                                    </div>
+                                                    <div class="score-separator">-</div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_ext }}
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_exterieur }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_exterieur)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="va-view-wrap">
+                                                        {% if date(match.date_match) < date() %}
+                                                            <button
+                                                                class="btn btn-primary view-button"
+                                                                data-target="#detail{{match.id}}"
+                                                                data-toggle="modal"
+                                                                type="button">Details</button>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="accordion bot-bord-collapse" id="novembre1">
+                                        <div
+                                            class="match-list-item btn btn-block"
+                                            data-toggle="collapse"
+                                            data-target="#novembre"
+                                            aria-expanded="false"
+                                            aria-controls="novembre">
+                                            <div class="team-name">
+                                                Novembre 2019
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse {% if date() | date('m/Y') == '11/2019' %} show {% endif %} bot-bord-collapse" id="octobre" data-parent="#octobre">
+                                    <div class="collapse  bot-bord-collapse" id="novembre" data-parent="#novembre">
+                                        {% for match in matchs %}
+                                            {% if match.date_match | date('m/Y') == '11/2019' %}
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        <span>{{ match.date_match | date('d') }}</span>
+                                                        {{ match.date_match | date('M') }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_domicile)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_domicile }}
+                                                    </div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_dom }}
+                                                    </div>
+                                                    <div class="score-separator">-</div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_ext }}
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_exterieur }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_exterieur)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="va-view-wrap">
+                                                        {% if date(match.date_match) < date() %}
+                                                            <button
+                                                                class="btn btn-primary view-button"
+                                                                data-target="#detail{{match.id}}"
+                                                                data-toggle="modal"
+                                                                type="button">Details</button>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="accordion bot-bord-collapse" id="decembre1">
+                                        <div
+                                            class="match-list-item btn btn-block"
+                                            data-toggle="collapse"
+                                            data-target="#decembre"
+                                            aria-expanded="false"
+                                            aria-controls="decembre">
+                                            <div class="team-name">
+                                                Décembre 2019
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse {% if date() | date('m/Y') == '12/2019' %} show {% endif %} bot-bord-collapse" id="decembre" data-parent="#decembre">
+                                        {% for match in matchs %}
+                                            {% if match.date_match | date('m/Y') == '12/2019' %}
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        <span>{{ match.date_match | date('d') }}</span>
+                                                        {{ match.date_match | date('M') }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_domicile)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_domicile }}
+                                                    </div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_dom }}
+                                                    </div>
+                                                    <div class="score-separator">-</div>
+                                                    <div class="team-score">
+                                                        {{ match.score_equipe_ext }}
+                                                    </div>
+                                                    <div class="team-name">
+                                                        {{ match.equipe_exterieur }}
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a href="match-single.html">
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/' ~ match.logo_exterieur)}}"
+                                                                alt=""
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="va-view-wrap">
+                                                        {% if date(match.date_match) < date() %}
+                                                            <button
+                                                                class="btn btn-primary view-button"
+                                                                data-target="#detail{{match.id}}"
+                                                                data-toggle="modal"
+                                                                type="button">Details</button>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </main>
+                        </div>
+                        <aside class="tm-sidebar-a uk-width-medium-1-4 uk-pull-3-4 uk-row-first">
+                            <div class="latest_posts">
+                                        <div class="sidebar_title_container">
+                                            <div class="sidebar_title border_side_container">
+                                                <h3>Dernières News</h3>
+                                            </div>
+                                        </div>
+                                        <div class="latest_posts_container">
+
+                                            <!-- Latest_post -->
+                                            {% for news in last_news %}
+                                            <div
+                                                class="latest_post d-flex flex-row align-items-start justify-content-start">
+                                                <div class="latest_post_image">
+                                                     <img class="img-news-classement" src="{{ asset('assets/images/uploads/' ~ news.imageNews)}}" alt="">
+                                                </div>
+                                                <div class="latest_post_content">
+                                                    <div class="latest_post_date">
+                                                        {{ news.createdAtNews | date('d/m/Y') }}
+                                                    </div>
+                                                    <div class="latest_post_title">
+                                                        <a href="{{ path('news')}}">{{ news.titreNews }}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                        </aside>
+                    </div>
+                </div>
+
+                <br><br><br>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% block javascript %}
+
+<script
+    type="text/javascript"
+    src="{{ asset('assets/js/calendrier_js/jquery.js')}}"></script>
+<script
+    type="text/javascript"
+    src="{{ asset('assets/js/calendrier_js/uikit.js')}}"></script>
+<script
+    type="text/javascript"
+    src="{{ asset('assets/js/calendrier_js/grid.js')}}"></script>
+<script
+    type="text/javascript"
+    src="{{ asset('assets/js/calendrier_js/slider.js')}}"></script>
+<script
+    type="text/javascript"
+    src="{{ asset('assets/js/calendrier_js/slideshow.js')}}"></script>
+<script
+    type="text/javascript"
+    src="{{ asset('assets/js/calendrier_js/slideset.js')}}"></script>
+<script
+    type="text/javascript"
+    src="{{ asset('assets/js/calendrier_js/sticky.js')}}"></script>
+<script
+    type="text/javascript"
+    src="{{ asset('assets/js/calendrier_js/lightbox.js')}}"></script>
+<script
+    type="text/javascript"
+    src="{{ asset('assets/js/calendrier_js/isotope.pkgd.min.js')}}"></script>
+<script
+    type="text/javascript"
+    src="{{ asset('assets/js/calendrier_js/theme.js')}}"></script>
+<script
+    type="text/javascript"
+    src="{{ asset('assets/js/calendrier_js/countdown.js')}}"></script>
+<script
+    type="text/javascript"
+    src="{{ asset('assets/js/calendrier_js/script.js')}}"></script>
+<script>
+// Set the date we're counting down to
+
+{% for nextmatch in nextmatch %}
+var date = '{{ nextmatch.date_match | date('M j, Y H:i:s') }}';
+var countDownDate = new Date(date).getTime();
+{% endfor %}
+
+// Update the count down every 1 second
+var x = setInterval(function () {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Output the result in an element with id="countdown"
+    document.getElementById("countdown").style.color = "white";
+    text = document.getElementById("countdown").innerHTML = days + " jour" + ((days > 1) ? 's ' : ' ') + hours + " heure" + ((hours > 1) ? 's ' : ' ')
+        + minutes + " minute" + ((minutes > 1) ? 's ' : ' ') + seconds + " seconde" + ((seconds > 1) ? 's' : '');
+
+    // If the count down is over, write some text 
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+}, 1000);
+</script>
+
+{% endblock %}
+
+{% endblock %}

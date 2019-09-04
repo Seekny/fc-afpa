@@ -1,0 +1,177 @@
+{% extends 'base.html.twig' %}
+{% block title %}classement{% endblock %}
+
+{% block body %}
+
+    {% block stylesheet %}
+        <!-- Style Blog -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/classement.css')}}">
+        <!-- Responsive Blog -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive/classement_responsive.css')}}">
+    {% endblock %}
+
+    <body class="tm-isblog tt-players-page">
+
+        <div class="over-wrap">
+            <div class="tm-top-a-box tm-full-width tm-box-bg-1 ">
+                <div class="uk-container uk-container-center">
+                    <section id="tm-top-a" class="tm-top-a uk-grid uk-grid-collapse" data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
+                        <div class="uk-width-1-1 uk-row-first">
+                            <div class="uk-panel">
+                                <div class="uk-cover-background uk-position-relative head-wrap" style="height: 550px; background-image: url({{ asset('assets/images/others/classement_fond1.png')}});">
+                                    <img class="uk-invisible" src="{{ asset('assets/images/others/news_fond9.jpg')}}" alt="" height="600">
+                                    <div class="uk-position-cover uk-flex uk-flex-center head-title">
+                                        <div class="row">
+                                            <div class="col text-center" style="">
+                                                <div class="home_text">Le
+                                                    <span>Classement</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="uk-container uk-container-center alt">
+                <ul class="uk-breadcrumb">
+                    <li>Classement</li>
+                </ul>
+            </div>
+
+            <div class="classement">
+                <div class="grid-container">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <main id="tm-content" class="tm-content">
+                                <div class="list-players-wrapper">
+                                    <div class="list-players-wrap" id="boundary">
+                                        <div class="uk-container uk-container-center alt">
+                                            <div class="match-list-wrap classement-size" style="margin-top:30px;margin-bottom:40px;">
+                                                <div class="match-list-item">
+                                                    <div class="data-classement">Pos</div>
+                                                    <div class="index-ranking-team-name">Équipes</div>
+                                                    <div class="data-classement matchs-played">MJ</div>
+                                                    <div class="data-classement matchs-victoires">Vic</div>
+                                                    <div class="data-classement matchs-nuls">Nul</div>
+                                                    <div class="data-classement matchs-defaites">Déf</div>
+                                                    <div class="data-classement matchs-buts-inscrits">B.Ins</div>
+                                                    <div class="data-classement matchs-buts-encaissés">B.Enc</div>
+                                                    <div class="data-classement matchs-differences-buts">Dif</div>
+                                                    <div class="data-classement matchs-points">Pts</div>
+                                                </div>
+
+                                                {% for classem in classement %}
+                                                    <div class="match-list-item">
+                                                        <div class="date">{{ classem.position_classement }}</div>
+                                                        <div class="logo">
+                                                            <a>
+                                                                <img src="{{ asset('assets/images/logos_clubs/' ~ classem.logo_equipe )}}" class="img-polaroid">
+                                                            </a>
+                                                        </div>
+                                                        <div class="team-name">{{ classem.nom_equipe }}</div>
+                                                        <div class="data-classement matchs-played">{{ classem.matchs_joue }}</div>
+                                                        <div class="data-classement matchs-victoires">{{ classem.victoires }}</div>
+                                                        <div class="data-classement matchs-nuls">{{ classem.nuls }}</div>
+                                                        <div class="data-classement matchs-defaites">{{ classem.defaites }}</div>
+                                                        <div class="data-classement matchs-buts-inscrits">{{ classem.buts_marques }}</div>
+                                                        <div class="data-classement matchs-buts-encaissés">{{ classem.buts_encaisses }}</div>
+                                                        <div class="data-classement matchs-differences-buts">{{ classem.difference_buts }}</div>
+                                                        <div class="data-classement matchs-points">{{ classem.points_classement }}</div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </main>
+                        </div>
+
+                        <!-- Sidebar -->
+                        <div class="col-lg-3 sidebar_col">
+                            <div class="sidebar">
+                                <div class="next_games">
+                                  
+                                    
+                                    <!-- Prochian Matchs -->
+                                    <div class="next_games_container text-center">
+                                      <div class="sidebar_title_container">
+                                        <div class="sidebar_title border_side_container">
+                                            <h3>Prochains Matchs</h3>
+                                        </div>
+                                    </div>
+                                    {% for NextFourMatchs in NextFourMatchs %}
+                                        <ul>
+                                            <li class="text-color-nextmatchs">
+                                                <div class="next_games_teams d-flex flex-row align-items-start justify-content-start">
+                                                    <div class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-start align-items-center justify-content-start">
+                                                        <div class="team_logo">
+                                                            <a>
+                                                                <img src="{{ asset('assets/images/logos_clubs/' ~ NextFourMatchs.logo_domicile)}}" alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="team_name text-left">
+                                                            <a>{{ NextFourMatchs.equipe_domicile }}</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-end align-items-center justify-content-end">
+                                                        <div class="team_name text-right order-xl-1 order-lg-2 order-1">
+                                                            <a>{{ NextFourMatchs.equipe_exterieur }}</a>
+                                                        </div>
+                                                        <div class="team_logo order-xl-2 order-lg-1 order-2">
+                                                            <a>
+                                                                <img src="{{ asset('assets/images/logos_clubs/' ~ NextFourMatchs.logo_exterieur)}}" alt="">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="next_games_date">
+                                                    <a>{{ NextFourMatchs.nom_competition_court }}</a>
+                                                </div>
+                                                <div class="next_games_date">
+                                                    <a>{{ NextFourMatchs.date_match | date('d/m/Y') }}</a>
+                                                </div>
+                                            </li>                                        
+                                        </ul>
+                                    {% endfor %}
+                                </div>
+                                  
+
+                                    <!-- Latest Posts -->
+                                <div class="latest_posts">
+                                    <div class="sidebar_title_container">
+                                        <div class="sidebar_title border_side_container">
+                                            <h3>Dernières News</h3>
+                                        </div>
+                                    </div>
+                                    <div class="latest_posts_container">
+
+                                            <!-- Latest_post -->
+                                        {% for new in news %}
+                                            <div class="latest_post d-flex flex-row align-items-start justify-content-start">
+                                                <div class="latest_post_image">
+                                                     <img class="img-news-classement" src="{{ asset('assets/images/uploads/' ~ new.imageNews)}}" alt="">
+                                                </div>
+                                                <div class="latest_post_content">
+                                                    <div class="latest_post_date">
+                                                        {{ new.createdAtNews | date('d/m/Y') }}
+                                                    </div>
+                                                    <div class="latest_post_title">
+                                                        <a href="{{ path('news')}}">{{ new.titreNews }}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+{% endblock %}
